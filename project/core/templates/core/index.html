@@ -1,15 +1,49 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>CORE</h1>
-    <ul>
-        <li><a href="{% url 'usuarios:index' %}">Ir a Usuarios</a></li>
-        <li><a href="{% url 'blog:index' %}">Ir a blog</a></li>
-    </ul>
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Small Business - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'core/assets/favicon.ico' %}" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'core/css/styles.css' %}" rel="stylesheet" />
+    </head>
+    <body>
+        {% include 'core/navbar.html' %}
+
+        <!-- Page Content-->
+        <div class="container px-4 px-lg-5">
+            <!-- Heading Row-->
+            <div class="row gx-4 gx-lg-5 align-items-center my-5">
+                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'core/img/gamersblogg.jpg' %}" alt="..." /></div>
+                <div class="col-lg-5">
+                    <h1 class="font-weight-light">Sobre GamerBlogg</h1>
+                    <p>En esta página en construcción vas a encontrar información sobre juegos, desarrolladoras y un apartado a un blog donde la comunidad puede opinar librevemente sobre videojuegos.</p>
+                    <p>¡Unete a esta gran comunidad!</p>
+                    <a class="btn btn-primary" href="#!">Call to Action!</a>
+                </div>
+            </div>
+            <!-- Call to Action-->
+            <div class="card text-white bg-secondary my-5 py-4 text-center">
+                <div class="card-body"><p class="text-white m-0">This call to action card is a great place to showcase some important information or display a clever tagline!</p></div>
+            </div>
+            <!-- Content Row-->
+            <div class="row gx-4 gx-lg-5">
+               {% include 'core/card.html' with titulo="El momento más triste de Red Dead Redemption" contenido="todo bien?" %}
+               {% include 'core/card.html' %}
+               {% include 'core/card.html' %}
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'core/js/scripts.js' %}"></script>
+    </body>
 </html>
