@@ -21,7 +21,13 @@ def guardar_noticia(request):
         # Aquí guardas la noticia en la base de datos
         NoticiaVideojuego.objects.create(titulo=titulo, descripcion=descripcion, fecha=fecha)
         # Puedes redirigir a otra página o simplemente refrescar la misma
-        return redirect('core:index')
+        noticias = []
+        for noticiass in NoticiaVideojuego.objects.all():
+            noticias.append(noticiass)
+        
+        contexto = {"noticias": noticias}
+        return render(request, "core/index.html", contexto)
+        
 
 def buscar_noticia(request):
     if request.method == 'GET':
@@ -30,3 +36,4 @@ def buscar_noticia(request):
         noticias = NoticiaVideojuego.objects.filter(titulo__icontains=nombre)
         # Puedes pasar el resultado de la búsqueda a tu template
         return render(request, 'index.html', {'noticias': noticias})
+    
