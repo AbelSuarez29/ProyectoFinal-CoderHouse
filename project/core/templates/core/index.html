@@ -16,6 +16,8 @@
     <body>
         {% include 'core/navbar.html' %}
 
+
+
         <!-- Page Content-->
         <div class="container px-4 px-lg-5">
             <!-- Heading Row-->
@@ -29,9 +31,38 @@
                 </div>
             </div>
             <!-- Call to Action-->
+
+            <h1>Registrar Noticias de Videojuegos</h1>
+
+            <!-- Formulario para registrar noticias -->
+
+            <form action="/guardar_noticia/" method="post">
+                {% csrf_token %}
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo"><br><br>
+                
+                <label for="descripcion">Descripción:</label><br>
+                <textarea id="descripcion" name="descripcion" rows="4" cols="50"></textarea><br><br>
+                
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha"><br><br>
+        
+                <button type="submit">Guardar Noticia</button>
+            </form>
+
+            <!-- Formulario de búsqueda por nombre -->
+
+            <h2>Buscar Noticias por Nombre</h2>
+            <form action="/buscar_noticia/" method="get">
+                <label for="busqueda">Buscar por nombre:</label>
+                <input type="text" id="busqueda" name="nombre"><br><br>
+                <button type="submit">Buscar</button>
+            </form>
+
             <div class="card text-white bg-secondary my-5 py-4 text-center">
                 <div class="card-body"><p class="text-white m-0">This call to action card is a great place to showcase some important information or display a clever tagline!</p></div>
             </div>
+            
             <!-- Content Row-->
             <div class="row gx-4 gx-lg-5">
                {% include 'core/card.html' with titulo="El momento más triste de Red Dead Redemption" contenido="todo bien?" %}
