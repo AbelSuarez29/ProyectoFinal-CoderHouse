@@ -22,7 +22,7 @@ def registro_view(request):
             return render(
                 request,
                 "core/index.html",
-                {"mensaje": f"usuario creado: {usuario}"}
+                {"mensaje": f"Usuario creado: {usuario}"}
             )
         else:
             return render(
