@@ -1,11 +1,13 @@
-from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import render
 from .forms import UserCreationFormulario
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, authenticate
 
-#------REGISTRAR USUARIOS--------#
 
 def home(request):
     return render(request, 'usuarios/index.html')
+
+#------REGISTRAR USUARIOS--------#
 
 def registro_view(request):
     if request.method == 'GET':
@@ -35,8 +37,6 @@ def registro_view(request):
         
 #---------LOGIN VIEW-----------#
         
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, authenticate
 
 def login_view(request):
     if request.user.is_authenticated:
