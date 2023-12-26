@@ -13,10 +13,11 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'core:about' %}" style="color: #fff;">Nosotros</a></li>
                         
                         {% if user.is_authenticated %}
-                            <span class="navbar-text" style="color: #fff; margin-left: 10px;"> <!-- Añade margen izquierdo -->
-                                {{ user.username }}
+                            <span class="navbar-text" style="color: #fff; margin-left: 10px;">
+                                <a class="navbar-text" href="{% url 'usuarios:editar_perfil' %}">editar perfil: {{ user.username }}</a>
+                                <img src="{{ avatar_url }}" style="height: 40px; width: auto; border-radius: 50%; vertical-align: middle;">
                             </span>
-                            <li class="nav-item" style="margin-left: 10px;"> <!-- Añade margen izquierdo -->
+                            <li class="nav-item" style="margin-left: 10px;">
                                 <a class="nav-link" href="{% url 'usuarios:logout' %}" style="color: #fff;">Logout</a>
                             </li>
                         {% else %}

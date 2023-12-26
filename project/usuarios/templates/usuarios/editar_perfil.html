@@ -7,7 +7,7 @@
 </head>
 <body>
     <div>
-        <form action="/usuarios/editar_perfil" method="POST">
+        <form action="/usuarios/editar_perfil/" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
         <input type="submit" value="Guardar">
