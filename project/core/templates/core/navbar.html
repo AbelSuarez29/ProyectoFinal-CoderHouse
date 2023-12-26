@@ -13,10 +13,12 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'core:about' %}" style="color: #fff;">Nosotros</a></li>
                         
                         {% if user.is_authenticated %}
-                            <span class="navbar-text" style="color: #fff;">
+                            <span class="navbar-text" style="color: #fff; margin-left: 10px;"> <!-- Añade margen izquierdo -->
                                 {{ user.username }}
                             </span>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'usuarios:logout' %}" style="color: #fff;">Logout</a></li>
+                            <li class="nav-item" style="margin-left: 10px;"> <!-- Añade margen izquierdo -->
+                                <a class="nav-link" href="{% url 'usuarios:logout' %}" style="color: #fff;">Logout</a>
+                            </li>
                         {% else %}
                             <li class="nav-item"><a class="nav-link" href="{% url 'usuarios:login' %}" style="color: #fff;">Login</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'usuarios:registro' %}" style="color: #fff;">Registrarse</a></li>
@@ -25,3 +27,4 @@
                 </div>
             </div>
         </nav>
+        
