@@ -1,0 +1,97 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Home-GamerBlogg</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{% static 'core/assets/favicon.ico' %}" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'core/css/styles.css' %}" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #0a192f; /* Color azul oscuro */
+            color: #fff; /* Color de texto blanco */
+        }
+        .container {
+            margin-top: 50px;
+        }
+        form {
+            background-color: #172a45; /* Color de fondo del formulario */
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        form input[type="text"],
+        form input[type="date"],
+        form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+        }
+        form input[type="submit"] {
+            background-color: #1abc9c; /* Color de fondo del botón */
+            color: #fff; /* Color de texto del botón */
+            cursor: pointer;
+        }
+        form input[type="submit"]:hover {
+            background-color: #149f82; /* Cambio de color al pasar el ratón por encima del botón */
+        }
+        .card {
+            background-color: #172a45; /* Color de fondo de las tarjetas */
+            color: #fff; /* Color de texto de las tarjetas */
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .card-body {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'core/navbar.html' %}
+    <div class="container text-center">
+        <h1>Registrar Noticias de Videojuegos</h1>
+        <form action="/crear_videojuegos/" method="POST">
+            {% csrf_token %}
+            <p>Titulo: <input type="text" name="titulo"></p>
+            <p>Informacion: <input type="text" name="descripcion"></p>
+            <p>Fecha: <input type="date" name="fecha"></p>
+            <input type="submit" value="Guardar">
+        </form>
+
+        <div class="row gx-4 gx-lg-5">
+            {% for noticia in noticias %}
+                <div class="col-md-6 col-lg-4 mb-5">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">{{ noticia.titulo }}</h2>
+                            <p class="card-text">{{ noticia.descripcion }}</p>
+                            <p class="card-text">{{ noticia.fecha }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{% static 'core/js/scripts.js' %}"></script>
+</body>
+</html>
+
+<!-- noticia/" method="POST">
+              
+                <p>Titulo: <input type="text" name="titulo">
+                <input type="submit" value="Guardar">
+            </form>
+            <br> --> -->

@@ -1,8 +1,0 @@
-            <div class="row gx-4 gx-lg-5">
-                {% for noticia in noticias %}
-                    {% include 'core/card.html' %}
-                {% endfor %}
-                <!-- Footer-->
-                {% include 'core/footer.html' %}
-
-                {% include 'core/navbar.html' %}

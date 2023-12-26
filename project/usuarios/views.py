@@ -4,6 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from .models import Avatar
+from .forms import UserEditionFormulario
 
 def home(request):
     return render(request, 'usuarios/index.html')
@@ -102,7 +103,7 @@ def editar_perfil_view(request):
             informacion = formulario.cleaned_data
 
             usuario.email = informacion["email"]
-            usuario.set.password(informacion["password1"])
+            usuario.set_password(informacion["password1"])
             usuario.first_name = informacion["first_name"]
             usuario.last_name = informacion["last_name"]
             usuario.save()
