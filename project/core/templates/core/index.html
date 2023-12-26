@@ -3,40 +3,52 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Home-GamerBlogg</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="{% static 'core/assets/favicon.ico' %}" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'core/css/styles.css' %}" rel="stylesheet" />
-    </head>
-    <body>
-        {% include 'core/navbar.html' %}
-        
-        
-        <!-- Page Content-->
-        <div class="container px-4 px-lg-5">
-            <h2>
-                {{ mensaje }}
-            </h2>
-            <!-- Heading Row-->
-            <div class="row gx-4 gx-lg-5 align-items-center my-5">
-                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'core/img/gamersblogg.jpg' %}" alt="..." /></div>
-                <div class="col-lg-5">
-                    <h1 class="font-weight-light">Sobre GamerBlogg</h1>
-                    <p>En esta página en construcción vas a encontrar información sobre juegos, desarrolladoras y un apartado a un blog donde la comunidad puede opinar librevemente sobre videojuegos.</p>
-                    <p>¡Unete a esta gran comunidad!</p>
-                    <a class="btn btn-primary" href="{% url 'usuarios:registro' %}">¡Registrate!</a>
-                </div>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Home-GamerBlogg</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/jpg" href="/project/core/static/core/img/gamersblogg.jpg" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'core/css/styles.css' %}" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #0a192f; /* Color azul oscuro */
+            color: #fff; /* Color de texto blanco */
+        }
+        .main-container {
+            background-color: #172a45; /* Color azul similar al formulario */
+            padding: 20px;
+            border-radius: 0; /* Esquinas sin redondear */
+        }
+    </style>
+</head>
+<body>
+    {% include 'core/navbar.html' %}
+    
+    <!-- Page Content-->
+    <div class="container px-4 px-lg-5 main-container">
+        <h2>
+            {{ mensaje }}
+        </h2>
+        <!-- Heading Row-->
+        <div class="row gx-4 gx-lg-5 align-items-center my-5">
+            <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'core/img/gamersblogg.jpg' %}" alt="..." /></div>
+            <div class="col-lg-5">
+                <h1 class="font-weight-light">Sobre GamerBlogg</h1>
+                <p>En esta página en construcción vas a encontrar información sobre juegos, desarrolladoras y un apartado a un blog donde la comunidad puede opinar librevemente sobre videojuegos.</p>
+                <p>¡Unete a esta gran comunidad!</p>
+                <a class="btn btn-primary" href="{% url 'usuarios:registro' %}">¡Registrate!</a>
             </div>
-                {% include 'core/footer.html' %}
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="{% static 'core/js/scripts.js' %}"></script>
-    </body>
+        </div>
+        {% include 'core/footer.html' %}
+    </div>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{% static 'core/js/scripts.js' %}"></script>
+</body>
 </html>

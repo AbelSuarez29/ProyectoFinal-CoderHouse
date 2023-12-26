@@ -1,7 +1,8 @@
-from django.shortcuts import render
-from .forms import UserCreationFormulario
+from django.shortcuts import render, redirect
+from .forms import UserCreationFormulario, UserEditionFormulario
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -75,3 +76,34 @@ def login_view(request):
 
 def logout_view(request):
     pass
+
+#---------EDITAR PERFIL-----------#
+
+@login_required
+def editar_perfil_view(request):
+    usuario = request.user
+    avatar = avatar.objects.filter(user=usuario).first()
+    avatar_url = avatar.image.url if avatar is not None else ""
+    if request.method == "GET":
+        valores_iniciales ={
+            "email": usuario.email,
+            "first_name": usuario.first_name,
+            "last_name": usuario.last_name
+        }
+
+        formulario = UserEditionFormulario(initial= valores_iniciales)
+        return render(request,
+                       "usuarios/editar_perfil.html",
+                         context={"form": formulario, "usuario": usuario,
+                                  "avatar_url": avatar_url})
+    else:
+        formulario = UserEditionFormulario(request.POST)
+        if formulario.is_valid():
+            informacion = formulario.cleaned_data
+
+            usuario.email = informacion["email"]
+            usuario.set.password(informacion["password1"])
+            usuario.first_name = informacion["first_name"]
+            usuario.last_name = informacion["last_name"]
+            usuario.save()
+            return redirect("core:index")
