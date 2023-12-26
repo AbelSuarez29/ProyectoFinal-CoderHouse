@@ -12,7 +12,6 @@ def about(request):
 #---------DB DE NOTICIAS DE VIDEOJUEGOS-----------#
 from django.contrib.auth.decorators import login_required
 
-
 def videojuegos_view(request):
 
     if request.method == "GET":
@@ -29,6 +28,7 @@ def videojuegos_view(request):
         modelo.save()
         return redirect("core:index")
     
+@login_required
 def videojuegos_todos_view(request):
     todas_las_noticias= []
     for noticias in NoticiaVideojuego.objects.all():
