@@ -65,6 +65,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'usuarios.context_processors.avatar_context',
             ],
         },
     },
@@ -127,4 +128,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL= "/usuarios/login"
 
+import os
 
+MEDIA_URL = '/media/avatares/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

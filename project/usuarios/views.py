@@ -117,3 +117,10 @@ def inicio_view(request):
         return render(request, "core/index.html", context={"avatar_url": avatar_url})
     else:
         avatar_url= ""
+
+def get_avatar_url_ctx(request):
+    avatars = Avatar.objects.filter(user=request.user.id)
+    if avatars.exists():
+        return {"avatars_url": avatars[0].imagen.url}
+    return {}
+

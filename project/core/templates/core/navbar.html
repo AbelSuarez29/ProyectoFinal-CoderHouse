@@ -11,7 +11,7 @@
                         <li class="nav-item"><a class="nav-link" href="/crear_videojuegos/todos" style="color: #fff;">Noticias</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'blog:index' %}" style="color: #fff;">Blog</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'core:about' %}" style="color: #fff;">Nosotros</a></li>
-                        
+
                         {% if user.is_authenticated %}
                             <span class="navbar-text" style="color: #fff; margin-left: 10px;">
                                 <a class="navbar-text" href="{% url 'usuarios:editar_perfil' %}">editar perfil: {{ user.username }}</a>
