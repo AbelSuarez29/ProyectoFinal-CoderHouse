@@ -2,40 +2,66 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Blog-GamerBlogg</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="{% static 'core/assets/favicon.ico' %}" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'core/css/styles.css' %}" rel="stylesheet" />
-        {% include 'core/navbar.html' %}
-        <h2>LOGIN</h2>
-    </head>
-    <body style="background-color: aliceblue;">
-        <form action="/usuarios/login/" method="POST">
-            {% csrf_token %}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Blog-GamerBlogg</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{% static 'core/assets/favicon.ico' %}" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'core/css/styles.css' %}" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #172a45;
+            color: white;
+        }
+        .center-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            max-width: 400px;
+            width: 100%;
+            padding: 40px; /* Relleno de 40px alrededor del formulario */
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    {% include 'core/navbar.html' %}
+    <div class="container-fluid center-form">
+        <div class="form-container">
+            <h2 class="text-center mb-4">Iniciar Sesión</h2>
+            <form action="/usuarios/login/" method="POST">
+                {% csrf_token %}
 
-            {{ form.as_p }}
+                {{ form.as_p }}
 
-            {% if form.non_field_errors %}
-                <div style="color:red;">
-                    {% for error in form.non_field_error %}
-                        {{ error }}
-                    {% endfor %}
+                {% if form.non_field_errors %}
+                    <div style="color:red;">
+                        {% for error in form.non_field_errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <div class="text-center mt-4">
+                    <input type="submit" class="btn btn-primary" value="Iniciar Sesión">
                 </div>
-            {% endif %}
-
-            <input type="submit" value="Iniciar Sesion">
-        </form>
-
-        {% include 'core/footer.html' %}
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="{% static 'core/js/scripts.js' %}"></script>
-    </body>
+            </form>
+        </div>
+    </div>
+    
+    {% include 'core/footer.html' %}
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{% static 'core/js/scripts.js' %}"></script>
+</body>
 </html>
+

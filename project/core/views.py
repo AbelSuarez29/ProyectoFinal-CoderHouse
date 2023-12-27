@@ -17,9 +17,11 @@ def videojuegos_view(request):
     if request.method == "GET":
         print("+"*90)
         print("+"*90)
+        form = BuscarNoticia()
         return render(
             request,
-            "core/index.html",
+            "core/noticias_todas",
+            context= {"form": form}
         )
     else:   
         from .models import NoticiaVideojuego
@@ -28,7 +30,7 @@ def videojuegos_view(request):
         modelo.save()
         return redirect("core:index")
     
-@login_required
+
 def videojuegos_todos_view(request):
     todas_las_noticias= []
     for noticias in NoticiaVideojuego.objects.all():
@@ -37,13 +39,13 @@ def videojuegos_todos_view(request):
     return render(request, "core/noticias_todas.html", contexto)
 
 #---------BUSCAR EN LA DB-----------#
-
+@login_required
 def buscar_noticia(request):
     if request.method == "GET":
         form = BuscarNoticia()
         return render(
             request,
-            "core/noticias_todas.html",
+            "core/noticias_todas_buscar.html",
             context={"form": form}
         )
     else:   

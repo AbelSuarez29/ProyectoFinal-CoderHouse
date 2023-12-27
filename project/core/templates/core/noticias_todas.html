@@ -58,14 +58,12 @@
 <body>
     {% include 'core/navbar.html' %}
     <div class="container text-center">
-        <h1>Registrar Noticias de Videojuegos</h1>
-        <form action="/crear_videojuegos/" method="POST">
-            {% csrf_token %}
-            <p>Titulo: <input type="text" name="titulo"></p>
-            <p>Informacion: <input type="text" name="descripcion"></p>
-            <p>Fecha: <input type="date" name="fecha"></p>
-            <input type="submit" value="Guardar">
-        </form>
+        <h1>Todas las noticias</h1>
+
+        <a href="/buscar_noticia" class="btn btn-primary">Registrar Noticia</a>
+        <br>
+        <br>
+
 
         <div class="row gx-4 gx-lg-5">
             {% for noticia in noticias %}
@@ -81,7 +79,7 @@
             {% endfor %}
         </div>
     </div>
-
+    
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
